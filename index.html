@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Tela Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h1>Login</h1>
+            <div class="warn-alert">
+                <p>Preencha <strong>todos</strong> os campos!</p>
+            </div>
+            <div class="error-alert">
+                <p>Usuário ou senha <strong>incorreto</strong>!</p>
+            </div>
+            <input class="input-login" type="text" id="user" placeholder="Usuário">
+            <input class="input-login" type="password" id="passwd" placeholder="Senha">
+            <a href="./pages/esqueceu_senha/index.html">Esqueceu a sua senha?</a>
+            <button class="btn-roxo" onclick="login()">Login</button>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

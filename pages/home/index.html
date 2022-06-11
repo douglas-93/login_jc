@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./style.css" />
+        <title>Tela Login</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="login-box">
+                <h1>Home</h1>
+                <div class="input-row">
+                    <input
+                        class="input-login"
+                        type="text"
+                        id="contato"
+                        placeholder="Contato"
+                    />
+                    <input
+                        class="input-login"
+                        type="text"
+                        id="telefone"
+                        placeholder="(31) 99999-9999"
+                        maxlength="15"
+                        onkeydown="formataNumero()"
+                    />
+                    <button class="btn-roxo" onclick="adicionar()">
+                        Adicionar
+                    </button>
+                </div>
+                <table id="tabela">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Contato</th>
+                            <th>Telefone</th>
+                            <th>Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dados-tabela"></tbody>
+                </table>
+                
+                <div class="success-alert">
+                    <p>Dados salvos com <strong>sucesso</strong>!</p>
+                </div>
+
+                <div class="row-sair">
+                    <button
+                        class="btn-roxo"
+                        onclick="geraPDF()"
+                        style="margin-right: 15px"
+                    >
+                        Gerar PDF
+                    </button>
+                    <button
+                        class="btn-roxo"
+                        onclick="salvar()"
+                        style="margin-right: 15px"
+                    >
+                        Salvar
+                    </button>
+                    <button class="btn-sair" onclick="sair()">Sair</button>
+                </div>
+            </div>
+        </div>
+        
+        <script src="./script.js"></script>
+        <script src="./script_funcoes.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://unpkg.com/jspdf-autotable@3.5.25/dist/jspdf.plugin.autotable.js"></script>
+        <script>
+            window.jsPDF = window.jspdf.jsPDF
+
+            const geraPDF = () => {
+                const table = document.getElementsByTagName('table')[0];
+
+                const doc = new jsPDF();
+
+                let pageHeight = doc.internal.pageSize.height || doc.internal.pageSize.getHeight();
+                let pageWidth = doc.internal.pageSize.width || doc.internal.pageSize.getWidth();
+
+
+                let str = "Lista de Contatos";
+                doc.setTextColor(100);
+                doc.setFontSize(30);
+                doc.text(str, pageWidth / 2, 30, {align: 'center'});
+
+                // doc.autoTable(  {html: '#tabela',
+                doc.autoTable(  {html: table,
+                                margin: {top: 80, bottom:50},
+                                startY: 40})
+                doc.save('table.pdf');
+            };
+        </script>
+    </body>
+</html>

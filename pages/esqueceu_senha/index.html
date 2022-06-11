@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Tela Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h1>Recuperar Senha</h1>
+            <p style="font-size: 18px; margin-bottom: 10px;">Não se preocupe, informe seu e-mail e vamos te ajudar a recuperar sua senha</p>
+            <div class="warn-alert">
+                <p>Preencha <strong>todos</strong> os campos!</p>
+            </div>
+            <input class="input-login" type="email" id="email" placeholder="mail@mail.com">
+            <div class="success-alert">
+                <p>E-mail enviado com <strong>sucesso</strong>!</p>
+            </div>
+            <button onclick="verificaCampo()" class="btn-roxo">Enviar</button>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
